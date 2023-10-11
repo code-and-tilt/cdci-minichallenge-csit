@@ -12,12 +12,10 @@ app.add_middleware(
     allow_methods=["GET"],  # Only allows GET requests
     allow_headers=["*"],
 )
-
-
-
 # Include any other app configurations or route definitions here
 app.include_router(standard.router, tags=["General APIs"])
 app.include_router(protected.router, tags=["Protected APIs"])
+
 
 @app.get("/", include_in_schema=False)
 def redirect_to_docs():
